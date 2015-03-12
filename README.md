@@ -1,2 +1,6 @@
 # js-nilapp
-Javascript common component for php developer
+之前写过很多js代码，大多都留在了电脑里或者项目里。
+从来没有分享过，现在开始，拿出来分享之。希望有用，但大部分都是给自己备个份。
+## 计划
+
+今后，会陆陆续续整理各种曾经写过的js，放在这里备份。
