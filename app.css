@@ -1,0 +1,20 @@
+	/* 分页用到的样式 2013-12*/
+	.page-wrapper{background-color: #ffffff;border-radius:0;box-shadow:0;line-height: 28px;}
+	.page-wrapper a,.page-wrapper a:active,.page-wrapper a:visited{color: #ffffff;background-color: #6faed9;text-decoration:none;cursor: pointer;border:1px 0 1px 1px solid #bec9d4; padding:2px 8px;}	
+	.page-wrapper a:hover{background-color:#fafafa;color: #2283c5;}
+	.page-wrapper .page-total{color: #ff6600}
+	.page-wrapper .page-pre{margin: 0 10px 0 0;}
+	.page-wrapper .page-next{margin: 0 0 0 10px;}
+	.page-wrapper .page-current{color: #FF0000;height: 28px; font: bold 16px; padding: 2px 8px; background-color: #f5f5f5;}
+	.page-wrapper .page-dotted{color: #444444;}
+	
+	/*=JqUI提示样式定制 2013-12-20 by yanghualiang=*/
+	 
+	.ui_content .nilapp-dialog-prompt{background: url("icons/prompt.gif") 0 10px no-repeat;}
+	.ui_content .nilapp-dialog-confirm{background: url("icons/confirm.gif") 0 10px no-repeat;}
+	.ui_content .nilapp-dialog-alert{background: url("icons/alert.gif") 0 10px no-repeat;}
+	.ui_content .nilapp-dialog-success{background: url("icons/success.gif") 0 10px no-repeat;}
+	.nilapp-dialog-content{font-size:16px;vertical-align: middle;text-align: center}
+	.ui_content .nilapp-dialog-content-icon{float: none;vertical-align: middle;display:inline-block;padding-top:24px;padding-left:65px;width:auto;height:48px;border:0px;}
+	.ui_content .nilapp-dialog-content-html{float: none;vertical-align: middle;}
+   
