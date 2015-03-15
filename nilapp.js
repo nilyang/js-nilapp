@@ -13,10 +13,10 @@ var NilApp = NilApp || {};
  * 基础
  * @since 2014-01-10
  */
--(function(win, __){
+-(function($, __){
     //引入sprintf
     /*! sprintf.js | Copyright (c) 2007-2013 Alexandru Marasteanu <hello at alexei dot ro> | 3 clause BSD license */
-    -(function(e){function r(e){return Object.prototype.toString.call(e).slice(8,-1).toLowerCase()}function i(e,t){for(var n=[];t>0;n[--t]=e);return n.join("")}var t=function(){return t.cache.hasOwnProperty(arguments[0])||(t.cache[arguments[0]]=t.parse(arguments[0])),t.format.call(null,t.cache[arguments[0]],arguments)};t.format=function(e,n){var s=1,o=e.length,u="",a,f=[],l,c,h,p,d,v;for(l=0;l<o;l++){u=r(e[l]);if(u==="string")f.push(e[l]);else if(u==="array"){h=e[l];if(h[2]){a=n[s];for(c=0;c<h[2].length;c++){if(!a.hasOwnProperty(h[2][c]))throw t('[sprintf] property "%s" does not exist',h[2][c]);a=a[h[2][c]]}}else h[1]?a=n[h[1]]:a=n[s++];if(/[^s]/.test(h[8])&&r(a)!="number")throw t("[sprintf] expecting number but found %s",r(a));switch(h[8]){case"b":a=a.toString(2);break;case"c":a=String.fromCharCode(a);break;case"d":a=parseInt(a,10);break;case"e":a=h[7]?a.toExponential(h[7]):a.toExponential();break;case"f":a=h[7]?parseFloat(a).toFixed(h[7]):parseFloat(a);break;case"o":a=a.toString(8);break;case"s":a=(a=String(a))&&h[7]?a.substring(0,h[7]):a;break;case"u":a>>>=0;break;case"x":a=a.toString(16);break;case"X":a=a.toString(16).toUpperCase()}a=/[def]/.test(h[8])&&h[3]&&a>=0?"+"+a:a,d=h[4]?h[4]=="0"?"0":h[4].charAt(1):" ",v=h[6]-String(a).length,p=h[6]?i(d,v):"",f.push(h[5]?a+p:p+a)}}return f.join("")},t.cache={},t.parse=function(e){var t=e,n=[],r=[],i=0;while(t){if((n=/^[^\x25]+/.exec(t))!==null)r.push(n[0]);else if((n=/^\x25{2}/.exec(t))!==null)r.push("%");else{if((n=/^\x25(?:([1-9]\d*)\$|\(([^\)]+)\))?(\+)?(0|'[^$])?(-)?(\d+)?(?:\.(\d+))?([b-fosuxX])/.exec(t))===null)throw"[sprintf] huh?";if(n[2]){i|=1;var s=[],o=n[2],u=[];if((u=/^([a-z_][a-z_\d]*)/i.exec(o))===null)throw"[sprintf] huh?";s.push(u[1]);while((o=o.substring(u[0].length))!=="")if((u=/^\.([a-z_][a-z_\d]*)/i.exec(o))!==null)s.push(u[1]);else{if((u=/^\[(\d+)\]/.exec(o))===null)throw"[sprintf] huh?";s.push(u[1])}n[2]=s}else i|=2;if(i===3)throw"[sprintf] mixing positional and named placeholders is not (yet) supported";r.push(n)}t=t.substring(n[0].length)}return r};var n=function(e,n,r){return r=n.slice(0),r.splice(0,0,e),t.apply(null,r)};e.sprintf=t,e.vsprintf=n})(wbapp);
+    -(function(e){function r(e){return Object.prototype.toString.call(e).slice(8,-1).toLowerCase()}function i(e,t){for(var n=[];t>0;n[--t]=e);return n.join("")}var t=function(){return t.cache.hasOwnProperty(arguments[0])||(t.cache[arguments[0]]=t.parse(arguments[0])),t.format.call(null,t.cache[arguments[0]],arguments)};t.format=function(e,n){var s=1,o=e.length,u="",a,f=[],l,c,h,p,d,v;for(l=0;l<o;l++){u=r(e[l]);if(u==="string")f.push(e[l]);else if(u==="array"){h=e[l];if(h[2]){a=n[s];for(c=0;c<h[2].length;c++){if(!a.hasOwnProperty(h[2][c]))throw t('[sprintf] property "%s" does not exist',h[2][c]);a=a[h[2][c]]}}else h[1]?a=n[h[1]]:a=n[s++];if(/[^s]/.test(h[8])&&r(a)!="number")throw t("[sprintf] expecting number but found %s",r(a));switch(h[8]){case"b":a=a.toString(2);break;case"c":a=String.fromCharCode(a);break;case"d":a=parseInt(a,10);break;case"e":a=h[7]?a.toExponential(h[7]):a.toExponential();break;case"f":a=h[7]?parseFloat(a).toFixed(h[7]):parseFloat(a);break;case"o":a=a.toString(8);break;case"s":a=(a=String(a))&&h[7]?a.substring(0,h[7]):a;break;case"u":a>>>=0;break;case"x":a=a.toString(16);break;case"X":a=a.toString(16).toUpperCase()}a=/[def]/.test(h[8])&&h[3]&&a>=0?"+"+a:a,d=h[4]?h[4]=="0"?"0":h[4].charAt(1):" ",v=h[6]-String(a).length,p=h[6]?i(d,v):"",f.push(h[5]?a+p:p+a)}}return f.join("")},t.cache={},t.parse=function(e){var t=e,n=[],r=[],i=0;while(t){if((n=/^[^\x25]+/.exec(t))!==null)r.push(n[0]);else if((n=/^\x25{2}/.exec(t))!==null)r.push("%");else{if((n=/^\x25(?:([1-9]\d*)\$|\(([^\)]+)\))?(\+)?(0|'[^$])?(-)?(\d+)?(?:\.(\d+))?([b-fosuxX])/.exec(t))===null)throw"[sprintf] huh?";if(n[2]){i|=1;var s=[],o=n[2],u=[];if((u=/^([a-z_][a-z_\d]*)/i.exec(o))===null)throw"[sprintf] huh?";s.push(u[1]);while((o=o.substring(u[0].length))!=="")if((u=/^\.([a-z_][a-z_\d]*)/i.exec(o))!==null)s.push(u[1]);else{if((u=/^\[(\d+)\]/.exec(o))===null)throw"[sprintf] huh?";s.push(u[1])}n[2]=s}else i|=2;if(i===3)throw"[sprintf] mixing positional and named placeholders is not (yet) supported";r.push(n)}t=t.substring(n[0].length)}return r};var n=function(e,n,r){return r=n.slice(0),r.splice(0,0,e),t.apply(null,r)};e.sprintf=t,e.vsprintf=n})(__);
 
     __.inArray = function(val, arr,i){
         var idx=-1;
@@ -35,7 +35,7 @@ var NilApp = NilApp || {};
     __.trim = function(str){
           return String(str).replace(/^\s+/,'').replace(/\s+$/,'');
     };
-})(window, NilApp);
+})(jQuery, NilApp);
 
 /**
  * 初始化地图模型全局
@@ -50,7 +50,7 @@ var NilApp = NilApp || {};
  * @author yanghualiang
  * @since 2013-12-04
  */
--(function (win,__) {
+-(function ($,__) {
     //初始化
 
     __.Map = __.Map || {};
@@ -97,7 +97,7 @@ var NilApp = NilApp || {};
         });
     };
 
-})(window,NilApp);
+})(jQuery,NilApp);
 
 
 
@@ -107,7 +107,7 @@ var NilApp = NilApp || {};
  * @author yanghualiang
  * @since 2013-12-17
  */
--(function(win,__){
+-(function($,__){
 	/*=定制提示 2013-12-20 by yanghualiang=*/
 	/*
 	.ui_content .nilapp-dialog-prompt{background: url("icons/prompt.gif") 0 10px no-repeat;}
@@ -279,7 +279,7 @@ var NilApp = NilApp || {};
         $(".ui_buttons input:button").removeClass("ui_state_highlight").addClass('btn');
         $(".ui_buttons input:button:eq(0)").addClass('btn-primary');
     }
-})(window,NilApp);
+})(jQuery,NilApp);
 
 /**
  * 输入框错误提示抖动
@@ -287,7 +287,7 @@ var NilApp = NilApp || {};
  * @author yanghualiang
  * @since 2013-12-17
  */
--(function(win,__){
+-(function($,__){
     __.shakeInputOnError = function (obj, isok){
         if (isok){
             $(obj).css({"background-color":"#ffffff","color":"#555555","border":"1px solid #cccccc"});
@@ -303,12 +303,12 @@ var NilApp = NilApp || {};
             return false;
         }
     };
-})(window,NilApp);
+})(jQuery,NilApp);
 
 /**
  * 验证函数集合
  */
--(function(win,__){
+-(function($,__){
     /**
      * email全匹配验证
      * @param {stirng} email
@@ -351,12 +351,12 @@ var NilApp = NilApp || {};
             .test(String(fdate));
     }
 
-})(window,NilApp);
+})(jQuery,NilApp);
 
 /**
  * 数学函数集合
  */
--(function(win,__){
+-(function($,__){
     /**
      * 浮点数字截取函数，获取指定位数小数，最后一位小数四舍五入
      * {字符串处理法}
@@ -477,13 +477,13 @@ var NilApp = NilApp || {};
         return s.join(dec);
     };
 
-})(window,NilApp);
+})(jQuery,NilApp);
 
 
 /**
  * nilapp web service base class
  */
--(function(win){
+-(function($,__){
 
     var Service = function(){};
     Service.prototype = {
@@ -540,24 +540,24 @@ var NilApp = NilApp || {};
         srv_obj.prototype = new this.__Service();
         return new srv_obj();
     };
-})(window,NilApp);
+})(jQuery,NilApp);
 
 /**
  * ajax翻页相关
  * @author yhl<nil.yang@qq.com>
  * @since 2014-01-10
  */
--(function(win,__){
-	/*__.Page 分页用到的样式
-	.page-wrapper{background-color: #ffffff;border-radius:0;box-shadow:0;line-height: 28px;}
-	.page-wrapper a,.page-wrapper a:active,.page-wrapper a:visited{color: #ffffff;background-color: #6faed9;text-decoration:none;cursor: pointer;border:1px 0 1px 1px solid #bec9d4; padding:2px 8px;}
-	.page-wrapper a:hover{background-color:#fafafa;color: #2283c5;}
-	.page-wrapper .page-total{color: #ff6600}
-	.page-wrapper .page-pre{margin: 0 10px 0 0;}
-	.page-wrapper .page-next{margin: 0 0 0 10px;}
-	.page-wrapper .page-current{color: #FF0000;height: 28px; font: bold 16px; padding: 2px 8px; background-color: #f5f5f5;}
-	.page-wrapper .page-dotted{color: #444444;}
-	*/
+-(function($,__){
+    /*__.Page 分页用到的样式
+    .page-wrapper{background-color: #ffffff;border-radius:0;box-shadow:0;line-height: 28px;}
+    .page-wrapper a,.page-wrapper a:active,.page-wrapper a:visited{color: #ffffff;background-color: #6faed9;text-decoration:none;cursor: pointer;border:1px 0 1px 1px solid #bec9d4; padding:2px 8px;}
+    .page-wrapper a:hover{background-color:#fafafa;color: #2283c5;}
+    .page-wrapper .page-total{color: #ff6600}
+    .page-wrapper .page-pre{margin: 0 10px 0 0;}
+    .page-wrapper .page-next{margin: 0 0 0 10px;}
+    .page-wrapper .page-current{color: #FF0000;height: 28px; font: bold 16px; padding: 2px 8px; background-color: #f5f5f5;}
+    .page-wrapper .page-dotted{color: #444444;}
+    */
 
     var Page={
         /**
@@ -583,10 +583,10 @@ var NilApp = NilApp || {};
             }
         },
         turnPage:function(page, page_all, handler_type, selector){
-            selector = typeof selector == "string" && /^[#.][^"']+$/.test(selector)? selector : "#pageNav_" + handler_type;
+            selector = typeof selector == "string" && /^[#.][^"']+$/.test(selector)? selector : "#ajaxpage-" + handler_type;
             var _page_str = this.getAjaxPageStr(page, page_all,handler_type);
             $(selector).html(_page_str).show();
-        },
+         },
         getAjaxPageStr:function(page, page_all,handler_type){
             return this.genPageStr(page, page_all, "#", handler_type,true);
         },
@@ -683,5 +683,51 @@ var NilApp = NilApp || {};
     };
 
     __.Page = Page;
-})(window,NilApp);
+})(jQuery,NilApp);
 
+/**
+ * js MVC 
+ * 已实现：模型，翻页等
+ * TODO： view、controller、js service 调用例子等
+ * @author NilYang<nil.yang@qq.com>
+ * @since 2015.03.15
+ */
+-(function($,__){
+    
+    var mvc = function(){
+        this.pageInfo = { limit: 10,offset: 0,total: 0,page: 1,page_all:0,handlerType:''};
+        this.dataList = [];
+
+        this.setPageInfo = function(pageInfo){
+            this.pageInfo.page = pageInfo.page;
+            this.pageInfo.limit = pageInfo.limit;
+            this.pageInfo.total = pageInfo.total;
+            this.pageInfo.handlerType = pageInfo.handlerType;
+            this.pageInfo.page_all = this.getPageAll();
+        };
+        this.getPageInfo = function(){
+            return this.pageInfo;
+        };
+        this.getPageAll = function(){
+            var per_page =this.pageInfo.limit,
+                total = this.pageInfo.total,
+                pages_all = Math.ceil(total / per_page);
+            return (pages_all < 1 ? 1: pages_all);
+        };
+        this.getItemById = function(id){
+            var datas = this.dataList,item;
+            for(var i=0 ,len = datas.length; i<len; i++){
+                if (datas[i].id == id){
+                    item = datas[i];
+                    break;
+                }
+            }
+            return item;
+        };
+    }
+        
+    __.getMvc = function(){
+        return new mvc();
+    };
+    
+})(jQuery,NilApp);
